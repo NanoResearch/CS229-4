@@ -218,3 +218,21 @@ end
 
 fprintf('Program paused. Press enter to continue.\n');
 pause;
+
+%% =========== Part 9: (Optional) Compute the test set error =============
+%  Use the selected "best" lambda value to compute the test set error.
+%
+
+lambda = 3;
+[theta_test] = trainLinearReg(X_poly, y, lambda);
+X_poly_test = polyFeatures(Xtest, p);
+X_poly_test = bsxfun(@minus, X_poly_test, mu);
+X_poly_test = bsxfun(@rdivide, X_poly_test, sigma);
+X_poly_test = [ones(size(X_poly_test, 1), 1), X_poly_test]; 
+error_test = linearRegCostFunction(X_poly_test, ytest, theta_test, 0);
+
+fprintf(['The test error using the best value of lambda = 3 is %f '...
+         '\n(this value should be about 3.8599\n'], ...
+         error_test);
+fprintf('Program paused. Press enter to continue.\n');
+pause;
