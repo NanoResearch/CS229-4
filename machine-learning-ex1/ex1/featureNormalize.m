@@ -32,7 +32,6 @@ X_mu = repmat(mu', size(X, 1), 1);
 X_sigma = repmat(sigma', size(X, 1), 1);
 X_norm = (X - X_mu)./X_sigma;
 
-
 % ============================================================
 
 end
